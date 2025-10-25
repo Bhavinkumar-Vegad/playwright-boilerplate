@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import * as fs from 'fs';
 import * as path from 'path';
-import { getOtpByEmail } from '../../utils/db';
+// import { getOtpByEmail } from '../../utils/db';
 import { AdminPage } from '../pages/adminPages/Admin';
 import { PIMPage } from '../pages/adminPages/PIM';
 import { LeavePage } from '../pages/adminPages/Leave';
@@ -42,8 +42,8 @@ export const adminTest = baseTest.extend<AdminFixtures>({
       await authPage.getByRole('textbox', { name: 'Password' }).fill(process.env.ADMIN_PASSWORD as string);
       await authPage.getByRole('button', { name: 'Login' }).click();
       await expect(authPage.getByRole('heading', { name: 'Dashboard' })).toBeVisible();
-      const adminOtp = await getOtpByEmail(process.env.ADMIN_EMAIL as string);
-      console.log(`Admin OTP for ${process.env.ADMIN_EMAIL}: ${adminOtp}`);
+      // const adminOtp = await getOtpByEmail(process.env.ADMIN_EMAIL as string);
+      // console.log(`Admin OTP for ${process.env.ADMIN_EMAIL}: ${adminOtp}`);
       await authPage.context().storageState({ path: adminAuthFile });
     }
     adminPageInstance = new AdminPage(authPage as Page);
